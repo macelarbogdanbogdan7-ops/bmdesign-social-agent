@@ -1,8 +1,7 @@
 """
-Integrare Google Drive: preia randari pentru 3 tipuri de continut:
+Integrare Google Drive: preia randari pentru 2 tipuri de continut:
 - imagini direct in folderul principal -> postari simple
 - subfoldere in "carusele/" -> fiecare subfolder e un carusel (2-10 imagini)
-- imagini in "stories/" -> postate ca Instagram Stories
 
 Setup necesar (vezi README.md): Service Account cu acces Viewer la folder.
 """
@@ -96,15 +95,6 @@ def list_new_carousel_folders(already_used_folder_ids: set[str]) -> list[dict]:
                 "images": images[:10],
             })
     return new_folders
-
-
-def list_new_story_images(already_seen_ids: set[str]) -> list[dict]:
-    """Imagini noi din "stories/" -> postate ca Instagram Stories."""
-    stories_id = _find_subfolder_id(_root_folder_id(), "stories")
-    if not stories_id:
-        return []
-    images = list_images_in_folder(stories_id)
-    return [f for f in images if f["id"] not in already_seen_ids]
 
 
 def download_image(file_id: str, file_name: str) -> Path:
