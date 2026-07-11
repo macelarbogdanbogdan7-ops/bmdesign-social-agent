@@ -1,6 +1,6 @@
 """
 Publica postari pe Instagram prin Instagram API (Instagram Login flow).
-Suporta 3 tipuri: imagine simpla, carusel (2-10 imagini), Story.
+Suporta 2 tipuri: imagine simpla si carusel (2-10 imagini).
 
 IMPORTANT: Foloseste graph.instagram.com (nu graph.facebook.com), pentru ca
 token-ul e generat prin fluxul Instagram Business Login, nu Facebook Login.
@@ -96,28 +96,6 @@ def publish_carousel_post(image_urls: list[str], caption: str) -> str:
     )
     carousel_resp.raise_for_status()
     container_id = carousel_resp.json()["id"]
-
-    _wait_until_finished(container_id, token)
-
-    publish_resp = requests.post(
-        f"{GRAPH_BASE}/{account_id}/media_publish",
-        data={"creation_id": container_id, "access_token": token},
-    )
-    publish_resp.raise_for_status()
-    return publish_resp.json()["id"]
-
-
-def publish_story(image_url: str) -> str:
-    """Postare Story (fara caption, expira in 24h)."""
-    account_id = _account_id()
-    token = _access_token()
-
-    container_resp = requests.post(
-        f"{GRAPH_BASE}/{account_id}/media",
-        data={"media_type": "STORIES", "image_url": image_url, "access_token": token},
-    )
-    container_resp.raise_for_status()
-    container_id = container_resp.json()["id"]
 
     _wait_until_finished(container_id, token)
 
