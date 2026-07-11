@@ -1,3 +1,18 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "id": "5692d767-2f31-4661-9617-0ae9344a33fb",
+      "status": "posted",
+      "pillar": "before_after",
+      "scheduled_date": "2026-07-11",
+      "source_image_id": "1BBL_8-Ab0V8hFcmor5u-ZzJCBku32tbE",
+      "source_image_name": "Image_2_with_logo.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/generated/Image_2_with_logo_feed_square.png",
+      "caption": "Uneori nu îți dai seama cât de mult poate schimba un spațiu până când îl vezi transformat. 🏠\n\nAcelași loc. Altă energie, altă lumină, altă viață.\n\nAsta e partea care ne place cel mai mult la ce facem — să vedem cum un spațiu uitat devine unul în care vrei să rămâi.\n\nTu ai un colț din casă pe care ai vrea să-l schimbi? Comentează **„DA\"** și povestim.\n\n#designinterior #transformarecasa #bmdesign #amenajariinterioare #acasa",
+      "created_at": "2026-07-11T20:50:18.810290",
+      "posted_at": "2026-07-11T20:51:04.287238",
+      "ig_media_id": "18210447187356483",
+      "error": null
+    }
+  ]
 }
