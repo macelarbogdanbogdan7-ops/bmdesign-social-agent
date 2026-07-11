@@ -1,6 +1,6 @@
 """
 Script de test, unic, pentru a verifica publicarea directa prin Instagram
-Graph API. Afiseaza raspunsul complet de eroare de la Meta, pentru diagnostic.
+API. Afiseaza raspunsul complet de eroare de la Meta, pentru diagnostic.
 """
 import os
 import requests
@@ -15,7 +15,7 @@ Tu ai alege un asemenea contrast in propria bucatarie, sau preferi tonuri mai di
 
 #designinterior #bucatariemoderna #cupru #arhitecturainterioara #bmdesign"""
 
-GRAPH_BASE = "https://graph.facebook.com/v21.0"
+GRAPH_BASE = "https://graph.instagram.com/v21.0"
 account_id = os.environ["IG_BUSINESS_ACCOUNT_ID"]
 token = os.environ["IG_ACCESS_TOKEN"]
 
