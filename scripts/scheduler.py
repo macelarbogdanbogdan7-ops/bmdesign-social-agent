@@ -12,8 +12,10 @@ Ce face, in ordine:
 """
 import itertools
 import os
+import re
 from datetime import date, timedelta
 from pathlib import Path
+from urllib.parse import quote
 
 import content_calendar as cal
 import google_drive as gdrive
@@ -29,6 +31,13 @@ RAW_GITHUB_BASE = os.environ.get(
 )
 
 
+def _slugify(name: str) -> str:
+    """Inlocuieste spatiile si caracterele speciale, ca numele de fisier sa fie
+    sigur intr-un URL (raw.githubusercontent.com nu accepta spatii neescapate)."""
+    name = name.replace(" ", "-")
+    return re.sub(r"[^A-Za-z0-9._-]", "", name)
+
+
 def _next_available_slot() -> str:
     data = cal._load_raw()
     used_dates = {e["scheduled_date"] for e in data["entries"] if e["status"] != "failed"}
@@ -41,7 +50,7 @@ def _next_available_slot() -> str:
 
 def _image_url_for(local_path: Path) -> str:
     subfolder = "generated" if local_path.parent.name == "generated" else "incoming"
-    return f"{RAW_GITHUB_BASE}/data/{subfolder}/{local_path.name}"
+    return f"{RAW_GITHUB_BASE}/data/{subfolder}/{quote(local_path.name)}"
 
 
 def step_1_ingest_new_content():
@@ -97,7 +106,7 @@ def step_1_ingest_new_content():
 
 
 def _prepare_single(entry: dict):
-    local_path = gdrive.download_image(entry["source_image_id"], entry["source_image_name"])
+    local_path = gdrive.download_image(entry["source_image_id"], _slugify(entry["source_image_name"]))
     try:
         generated_path = imgen.generate_variation(local_path, "feed_square")
     except Exception as gen_error:
@@ -117,8 +126,9 @@ def _prepare_single(entry: dict):
 
 def _prepare_carousel(entry: dict):
     local_paths = []
+    folder_slug = _slugify(entry["source_folder_name"])
     for img_id, img_name in zip(entry["source_image_ids"], entry["source_image_names"]):
-        prefixed_name = f"{entry['source_folder_name']}_{img_name}"
+        prefixed_name = f"{folder_slug}_{_slugify(img_name)}"
         local_paths.append(gdrive.download_image(img_id, prefixed_name))
 
     image_description = (
@@ -136,7 +146,7 @@ def _prepare_carousel(entry: dict):
 
 
 def _prepare_story(entry: dict):
-    local_path = gdrive.download_image(entry["source_image_id"], entry["source_image_name"])
+    local_path = gdrive.download_image(entry["source_image_id"], _slugify(entry["source_image_name"]))
     try:
         generated_path = imgen.generate_variation(local_path, "story_vertical")
     except Exception as gen_error:
