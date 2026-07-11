@@ -97,6 +97,7 @@ def process_comments():
     replied_ids = set(data["replied_comment_ids"])
 
     media_list = ig.list_recent_media(limit=MEDIA_TO_CHECK)
+    print(f"  [debug] Postari recente gasite: {len(media_list)}")
     new_replies = 0
 
     for media in media_list:
@@ -106,6 +107,8 @@ def process_comments():
             print(f"  ! Nu am putut citi comentariile pentru {media['id']}: {e}")
             continue
 
+        print(f"  [debug] Media {media['id']}: {len(comments)} comentarii, dintre care {sum(1 for c in comments if c['id'] not in replied_ids)} noi")
+
         for comment in comments:
             comment_id = comment["id"]
             if comment_id in replied_ids:
@@ -113,9 +116,11 @@ def process_comments():
 
             text = comment.get("text", "")
             username = comment.get("username", "cineva")
+            print(f"  [debug] Comentariu nou de la {username}: {text!r}")
 
             result = _classify(COMMENT_SYSTEM_PROMPT, text)
             replied_ids.add(comment_id)  # marcam procesat indiferent de rezultat
+            print(f"  [debug] Clasificare: {result}")
 
             if result.get("is_lead") and result.get("reply"):
                 try:
@@ -136,7 +141,13 @@ def process_dms():
     replied_ids = set(data["replied_message_ids"])
     account_id = os.environ["IG_BUSINESS_ACCOUNT_ID"]
 
-    conversations = ig.list_conversations(limit=CONVERSATIONS_TO_CHECK)
+    try:
+        conversations = ig.list_conversations(limit=CONVERSATIONS_TO_CHECK)
+    except Exception as e:
+        print(f"  ! Nu am putut citi conversatiile: {e}")
+        return
+
+    print(f"  [debug] Conversatii gasite: {len(conversations)}")
     new_replies = 0
 
     for convo in conversations:
@@ -146,6 +157,8 @@ def process_dms():
         except Exception as e:
             print(f"  ! Nu am putut citi mesajele din conversatia {convo_id}: {e}")
             continue
+
+        print(f"  [debug] Conversatia {convo_id}: {len(messages)} mesaje")
 
         for msg in messages:
             msg_id = msg.get("id")
@@ -159,8 +172,10 @@ def process_dms():
                 replied_ids.add(msg_id)
                 continue
 
+            print(f"  [debug] Mesaj nou de la {sender_id}: {text!r}")
             result = _classify(DM_SYSTEM_PROMPT, text)
             replied_ids.add(msg_id)
+            print(f"  [debug] Clasificare: {result}")
 
             if result.get("reply"):
                 try:
