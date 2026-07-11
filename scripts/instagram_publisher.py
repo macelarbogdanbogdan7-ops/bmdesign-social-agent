@@ -1,6 +1,7 @@
 """
 Publica postari pe Instagram prin Instagram API (Instagram Login flow).
-Suporta 2 tipuri: imagine simpla si carusel (2-10 imagini).
+Suporta 2 tipuri de postari (imagine simpla, carusel) + gestionare
+comentarii si mesaje directe (DM) pentru Modulul 3 (raspuns automat la leaduri).
 
 IMPORTANT: Foloseste graph.instagram.com (nu graph.facebook.com), pentru ca
 token-ul e generat prin fluxul Instagram Business Login, nu Facebook Login.
@@ -12,6 +13,7 @@ Necesita (vezi .env.example):
 Limite de retinut (Meta, 2026):
 - Max 100 postari publicate prin API la 24h per cont (carusel = 1 postare).
 - 200 apeluri/ora per aplicatie.
+- 200 DM-uri automate/ora per cont.
 """
 import os
 import time
@@ -107,11 +109,31 @@ def publish_carousel_post(image_urls: list[str], caption: str) -> str:
     return publish_resp.json()["id"]
 
 
+# ---------------------------------------------------------------------------
+# Comentarii
+# ---------------------------------------------------------------------------
+
+def list_recent_media(limit: int = 15) -> list[dict]:
+    """Ultimele postari publicate (id, caption, timestamp), pentru a le verifica
+    comentariile."""
+    token = _access_token()
+    account_id = _account_id()
+    resp = requests.get(
+        f"{GRAPH_BASE}/{account_id}/media",
+        params={"fields": "id,caption,timestamp", "limit": limit, "access_token": token},
+    )
+    resp.raise_for_status()
+    return resp.json().get("data", [])
+
+
 def get_recent_comments(media_id: str) -> list[dict]:
     token = _access_token()
     resp = requests.get(
         f"{GRAPH_BASE}/{media_id}/comments",
-        params={"fields": "id,text,username,timestamp", "access_token": token},
+        params={
+            "fields": "id,text,username,timestamp,from",
+            "access_token": token,
+        },
     )
     resp.raise_for_status()
     return resp.json().get("data", [])
@@ -125,3 +147,49 @@ def reply_to_comment(comment_id: str, message: str) -> str:
     )
     resp.raise_for_status()
     return resp.json()["id"]
+
+
+# ---------------------------------------------------------------------------
+# Mesaje directe (DM)
+# ---------------------------------------------------------------------------
+
+def list_conversations(limit: int = 20) -> list[dict]:
+    """Conversatiile recente de Direct Message."""
+    token = _access_token()
+    account_id = _account_id()
+    resp = requests.get(
+        f"{GRAPH_BASE}/{account_id}/conversations",
+        params={"platform": "instagram", "limit": limit, "access_token": token},
+    )
+    resp.raise_for_status()
+    return resp.json().get("data", [])
+
+
+def get_conversation_messages(conversation_id: str, limit: int = 10) -> list[dict]:
+    """Ultimele mesaje dintr-o conversatie (id, from, message/text, created_time)."""
+    token = _access_token()
+    resp = requests.get(
+        f"{GRAPH_BASE}/{conversation_id}",
+        params={
+            "fields": f"messages.limit({limit}){{id,from,to,message,created_time}}",
+            "access_token": token,
+        },
+    )
+    resp.raise_for_status()
+    return resp.json().get("messages", {}).get("data", [])
+
+
+def send_dm(recipient_id: str, message: str) -> str:
+    """Trimite un mesaj direct catre un utilizator (recipient_id = PSID/IGSID)."""
+    token = _access_token()
+    account_id = _account_id()
+    resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/messages",
+        json={
+            "recipient": {"id": recipient_id},
+            "message": {"text": message},
+        },
+        params={"access_token": token},
+    )
+    resp.raise_for_status()
+    return resp.json().get("message_id", "")
