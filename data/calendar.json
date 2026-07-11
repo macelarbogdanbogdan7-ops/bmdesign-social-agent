@@ -13,6 +13,38 @@
       "posted_at": "2026-07-11T20:51:04.287238",
       "ig_media_id": "18210447187356483",
       "error": null
+    },
+    {
+      "id": "78548196-9562-4dcc-9773-f084a03b61f6",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "practical_tip",
+      "scheduled_date": "2026-07-13",
+      "source_folder_id": "1_QUS0yneM23KSzt-LqER4bsD97mXht2A",
+      "source_folder_name": "baie mare apartament Fagaras",
+      "source_image_ids": [
+        "1rDDeeB9YgRluL2lmvjropK1VJhqou9bn",
+        "1Eys0cYLFQUJTSICG65GfJKqVAxWQImxx",
+        "1eAkH0T-pLjkU05iuqzhqOLUROmDNM7HL",
+        "1vocWQZxawqXOmrAGmwIli41MOZRgKjVc"
+      ],
+      "source_image_names": [
+        "r27.png",
+        "r28.png",
+        "r29.png",
+        "r30.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r27.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r28.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r29.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r30.png"
+      ],
+      "caption": "O baie care se simte mare nu e neapărat una care *este* mare. Totul ține de câteva alegeri simple: culori deschise pe pereți, lumină bine plasată (nu doar un spot în tavan) și cât mai puține suprafețe „aglomerate\" vizual.\n\nDacă ai o baie mică sau medie, cel mai rapid lucru pe care îl poți face e să renunți la dulapuri suspendate grele și să înlocuiești cu rafturi deschise sau nișe în perete. Câștigă ochiul spațiu pe care metrii pătrați nu ți-l dau.\n\nAi o baie pe care vrei s-o regândești? Comentează „baie\" și discutăm 🚿\n\n#designinterior #baiemodern #amenajareapartament #bmdesign #sfaturidesign",
+      "created_at": "2026-07-11T21:48:19.924714",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
     }
   ]
 }
