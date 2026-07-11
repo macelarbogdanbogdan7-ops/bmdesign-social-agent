@@ -3,7 +3,8 @@ Gestioneaza calendarul de continut: o lista de "intrari" (postari) salvate
 intr-un fisier JSON care persista in repo (commit automat de GitHub Actions
 dupa fiecare rulare).
 
-Fiecare intrare are un status: pending -> ready -> posted (sau failed).
+Fiecare intrare are un status: pending -> ready -> posted (sau failed), si un
+post_type: "single" | "carousel" | "story".
 """
 import json
 import uuid
@@ -13,8 +14,6 @@ from pathlib import Path
 CALENDAR_PATH = Path(__file__).parent.parent / "data" / "calendar.json"
 
 # Pilonii tematici de continut - informativi + generare de trafic/leaduri.
-# Nu presupun perechi de imagini (before/after), functioneaza cu orice
-# randare individuala primita din Drive.
 CONTENT_PILLARS = [
     "practical_tip",
     "material_spotlight",
@@ -43,11 +42,72 @@ def add_entry(
     pillar: str,
     scheduled_date: str,
 ) -> dict:
+    """Postare simpla (o singura imagine)."""
     data = _load_raw()
     entry = {
         "id": str(uuid.uuid4()),
         "status": "pending",
+        "post_type": "single",
         "pillar": pillar,
+        "scheduled_date": scheduled_date,
+        "source_image_id": source_image_id,
+        "source_image_name": source_image_name,
+        "generated_image_path": None,
+        "caption": None,
+        "created_at": datetime.utcnow().isoformat(),
+        "posted_at": None,
+        "ig_media_id": None,
+        "error": None,
+    }
+    data["entries"].append(entry)
+    _save_raw(data)
+    return entry
+
+
+def add_carousel_entry(
+    source_folder_id: str,
+    source_folder_name: str,
+    image_ids: list[str],
+    image_names: list[str],
+    pillar: str,
+    scheduled_date: str,
+) -> dict:
+    """Postare tip carusel (2-10 imagini dintr-un subfolder dedicat)."""
+    data = _load_raw()
+    entry = {
+        "id": str(uuid.uuid4()),
+        "status": "pending",
+        "post_type": "carousel",
+        "pillar": pillar,
+        "scheduled_date": scheduled_date,
+        "source_folder_id": source_folder_id,
+        "source_folder_name": source_folder_name,
+        "source_image_ids": image_ids,
+        "source_image_names": image_names,
+        "generated_image_paths": None,
+        "caption": None,
+        "created_at": datetime.utcnow().isoformat(),
+        "posted_at": None,
+        "ig_media_id": None,
+        "error": None,
+    }
+    data["entries"].append(entry)
+    _save_raw(data)
+    return entry
+
+
+def add_story_entry(
+    source_image_id: str,
+    source_image_name: str,
+    scheduled_date: str,
+) -> dict:
+    """Postare tip Story (fara caption, expira in 24h pe Instagram)."""
+    data = _load_raw()
+    entry = {
+        "id": str(uuid.uuid4()),
+        "status": "pending",
+        "post_type": "story",
+        "pillar": None,
         "scheduled_date": scheduled_date,
         "source_image_id": source_image_id,
         "source_image_name": source_image_name,
@@ -100,5 +160,18 @@ def mark_failed(entry_id: str, error: str) -> None:
 
 
 def already_used_image_ids() -> set[str]:
+    """Toate ID-urile de imagini deja folosite, indiferent de tipul postarii."""
     data = _load_raw()
-    return {e["source_image_id"] for e in data["entries"]}
+    ids = set()
+    for e in data["entries"]:
+        if e.get("source_image_id"):
+            ids.add(e["source_image_id"])
+        if e.get("source_image_ids"):
+            ids.update(e["source_image_ids"])
+    return ids
+
+
+def already_used_folder_ids() -> set[str]:
+    """Subfolderele de carusel deja procesate (nu se reiau)."""
+    data = _load_raw()
+    return {e["source_folder_id"] for e in data["entries"] if e.get("source_folder_id")}
