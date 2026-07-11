@@ -101,13 +101,14 @@ def process_comments():
     new_replies = 0
 
     for media in media_list:
+        reported_count = media.get("comments_count", "?")
         try:
             comments = ig.get_recent_comments(media["id"])
         except Exception as e:
             print(f"  ! Nu am putut citi comentariile pentru {media['id']}: {e}")
             continue
 
-        print(f"  [debug] Media {media['id']}: {len(comments)} comentarii, dintre care {sum(1 for c in comments if c['id'] not in replied_ids)} noi")
+        print(f"  [debug] Media {media['id']}: comments_count raportat de Meta={reported_count}, primite prin API={len(comments)}")
 
         for comment in comments:
             comment_id = comment["id"]
