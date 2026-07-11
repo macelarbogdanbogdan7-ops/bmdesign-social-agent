@@ -1,18 +1,16 @@
 """
 Publica postari pe Instagram prin Instagram API (Instagram Login flow).
+Suporta 3 tipuri: imagine simpla, carusel (2-10 imagini), Story.
 
 IMPORTANT: Foloseste graph.instagram.com (nu graph.facebook.com), pentru ca
 token-ul e generat prin fluxul Instagram Business Login, nu Facebook Login.
-Graph API cere un URL public catre imagine, nu upload direct de fisier.
-Imaginile generate se pun in repo (/data/incoming), GitHub Actions le comite,
-iar API-ul le preia de la adresa raw.githubusercontent.com.
+Graph API cere URL-uri publice catre imagini, nu upload direct de fisiere.
 
 Necesita (vezi .env.example):
-- IG_ACCESS_TOKEN: token generat din API Setup (Instagram Login flow).
-- IG_BUSINESS_ACCOUNT_ID: ID-ul contului tau Business/Creator.
+- IG_ACCESS_TOKEN, IG_BUSINESS_ACCOUNT_ID
 
 Limite de retinut (Meta, 2026):
-- Max 100 postari publicate prin API la 24h per cont.
+- Max 100 postari publicate prin API la 24h per cont (carusel = 1 postare).
 - 200 apeluri/ora per aplicatie.
 """
 import os
@@ -31,23 +29,9 @@ def _account_id() -> str:
     return os.environ["IG_BUSINESS_ACCOUNT_ID"]
 
 
-def publish_image_post(image_url: str, caption: str) -> str:
-    account_id = _account_id()
-    token = _access_token()
-
-    container_resp = requests.post(
-        f"{GRAPH_BASE}/{account_id}/media",
-        data={
-            "image_url": image_url,
-            "caption": caption,
-            "access_token": token,
-        },
-    )
-    container_resp.raise_for_status()
-    container_id = container_resp.json()["id"]
-
+def _wait_until_finished(container_id: str, token: str) -> None:
     status = "IN_PROGRESS"
-    for _ in range(20):
+    for _ in range(30):
         check = requests.get(
             f"{GRAPH_BASE}/{container_id}",
             params={"fields": "status_code", "access_token": token},
@@ -55,13 +39,87 @@ def publish_image_post(image_url: str, caption: str) -> str:
         check.raise_for_status()
         status = check.json().get("status_code")
         if status == "FINISHED":
-            break
+            return
         if status == "ERROR":
-            raise RuntimeError(f"Containerul media a esuat pentru {image_url}")
+            raise RuntimeError(f"Containerul media {container_id} a esuat.")
         time.sleep(6)
+    raise TimeoutError(f"Containerul {container_id} nu s-a procesat la timp.")
 
-    if status != "FINISHED":
-        raise TimeoutError("Containerul media nu s-a procesat la timp.")
+
+def publish_image_post(image_url: str, caption: str) -> str:
+    """Postare simpla, o singura imagine."""
+    account_id = _account_id()
+    token = _access_token()
+
+    container_resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/media",
+        data={"image_url": image_url, "caption": caption, "access_token": token},
+    )
+    container_resp.raise_for_status()
+    container_id = container_resp.json()["id"]
+
+    _wait_until_finished(container_id, token)
+
+    publish_resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/media_publish",
+        data={"creation_id": container_id, "access_token": token},
+    )
+    publish_resp.raise_for_status()
+    return publish_resp.json()["id"]
+
+
+def publish_carousel_post(image_urls: list[str], caption: str) -> str:
+    """Postare tip carusel din 2-10 imagini."""
+    account_id = _account_id()
+    token = _access_token()
+
+    if not (2 <= len(image_urls) <= 10):
+        raise ValueError("Un carusel trebuie sa aiba intre 2 si 10 imagini.")
+
+    child_ids = []
+    for url in image_urls:
+        child_resp = requests.post(
+            f"{GRAPH_BASE}/{account_id}/media",
+            data={"image_url": url, "is_carousel_item": "true", "access_token": token},
+        )
+        child_resp.raise_for_status()
+        child_ids.append(child_resp.json()["id"])
+
+    carousel_resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/media",
+        data={
+            "media_type": "CAROUSEL",
+            "children": ",".join(child_ids),
+            "caption": caption,
+            "access_token": token,
+        },
+    )
+    carousel_resp.raise_for_status()
+    container_id = carousel_resp.json()["id"]
+
+    _wait_until_finished(container_id, token)
+
+    publish_resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/media_publish",
+        data={"creation_id": container_id, "access_token": token},
+    )
+    publish_resp.raise_for_status()
+    return publish_resp.json()["id"]
+
+
+def publish_story(image_url: str) -> str:
+    """Postare Story (fara caption, expira in 24h)."""
+    account_id = _account_id()
+    token = _access_token()
+
+    container_resp = requests.post(
+        f"{GRAPH_BASE}/{account_id}/media",
+        data={"media_type": "STORIES", "image_url": image_url, "access_token": token},
+    )
+    container_resp.raise_for_status()
+    container_id = container_resp.json()["id"]
+
+    _wait_until_finished(container_id, token)
 
     publish_resp = requests.post(
         f"{GRAPH_BASE}/{account_id}/media_publish",
