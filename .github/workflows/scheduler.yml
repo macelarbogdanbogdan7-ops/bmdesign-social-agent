@@ -1,0 +1,51 @@
+name: Agent Social Media - Rulare Programata
+
+on:
+  schedule:
+      - cron: "0 7 * * *"
+          - cron: "0 16 * * *"
+            workflow_dispatch: {}
+
+            jobs:
+              run-agent:
+                  runs-on: ubuntu-latest
+                      permissions:
+                            contents: write
+
+                                steps:
+                                      - name: Checkout repo
+                                              uses: actions/checkout@v4
+
+                                                    - name: Setup Python
+                                                            uses: actions/setup-python@v5
+                                                                    with:
+                                                                              python-version: "3.11"
+
+                                                                                    - name: Instaleaza dependentele
+                                                                                            run: pip install -r requirements.txt
+
+                                                                                                  - name: Creeaza directoarele necesare
+                                                                                                          run: mkdir -p config data/incoming
+                                                                                                          
+                                                                                                                - name: Scrie cheia Google Service Account din secret
+                                                                                                                        run: echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > config/gdrive-service-account.json
+                                                                                                                        
+                                                                                                                              - name: Ruleaza agentul
+                                                                                                                                      env:
+                                                                                                                                                IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+                                                                                                                                                          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+                                                                                                                                                                    GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+                                                                                                                                                                              GDRIVE_SERVICE_ACCOUNT_FILE: config/gdrive-service-account.json
+                                                                                                                                                                                        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+                                                                                                                                                                                                  RAW_GITHUB_BASE: https://raw.githubusercontent.com/${{ github.repository }}/main
+                                                                                                                                                                                                          working-directory: scripts
+                                                                                                                                                                                                                  run: python scheduler.py
+                                                                                                                                                                                                                  
+                                                                                                                                                                                                                        - name: Comite modificarile (calendar + imagini noi)
+                                                                                                                                                                                                                                run: |
+                                                                                                                                                                                                                                          git config user.name "bmdesign-agent"
+                                                                                                                                                                                                                                                    git config user.email "agent@bmdesign.ro"
+                                                                                                                                                                                                                                                              git add data/
+                                                                                                                                                                                                                                                                        git diff --quiet --cached || git commit -m "Actualizare automata calendar/continut [skip ci]"
+                                                                                                                                                                                                                                                                                  git push
+                                                                                                                                                                                                                                                                                  
