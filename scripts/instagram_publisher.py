@@ -114,13 +114,17 @@ def publish_carousel_post(image_urls: list[str], caption: str) -> str:
 # ---------------------------------------------------------------------------
 
 def list_recent_media(limit: int = 15) -> list[dict]:
-    """Ultimele postari publicate (id, caption, timestamp), pentru a le verifica
-    comentariile."""
+    """Ultimele postari publicate (id, caption, timestamp, comments_count),
+    pentru a le verifica comentariile."""
     token = _access_token()
     account_id = _account_id()
     resp = requests.get(
         f"{GRAPH_BASE}/{account_id}/media",
-        params={"fields": "id,caption,timestamp", "limit": limit, "access_token": token},
+        params={
+            "fields": "id,caption,timestamp,comments_count",
+            "limit": limit,
+            "access_token": token,
+        },
     )
     resp.raise_for_status()
     return resp.json().get("data", [])
