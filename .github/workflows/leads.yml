@@ -1,0 +1,40 @@
+name: Agent Leaduri - Comentarii si DM-uri
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # la fiecare 2 ore
+  workflow_dispatch: {}
+
+jobs:
+  respond-to-leads:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instaleaza dependentele
+        run: pip install -r requirements.txt
+
+      - name: Raspunde la comentarii si DM-uri
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        working-directory: scripts
+        run: python lead_responder.py
+
+      - name: Comite interactiunile procesate
+        run: |
+          git config user.name "bmdesign-agent"
+          git config user.email "agent@bmdesign.ro"
+          git add data/interactions.json
+          git diff --quiet --cached || git commit -m "Actualizare interactiuni procesate [skip ci]"
+          git push
