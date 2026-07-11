@@ -3,11 +3,9 @@ Orchestrator principal, rulat de GitHub Actions la fiecare rulare programata.
 
 Ce face, in ordine:
 1. Verifica Google Drive pentru randari noi -> le adauga in calendar (pending).
-2. Pentru intrarile "pending", genereaza caption -> le trece in "ready".
+2. Pentru intrarile "pending", genereaza o varianta de marketing (Nano Banana
+   Pro) + caption -> le trece in "ready".
 3. Pentru intrarile "ready" programate azi -> le publica pe Instagram.
-
-Nota: generarea de imagini noi (variatii via Nano Banana Pro, pornind de la
-randarile tale) e Modulul 2, momentan folosim direct imaginea urcata.
 """
 import itertools
 import os
@@ -17,6 +15,7 @@ from pathlib import Path
 import content_calendar as cal
 import google_drive as gdrive
 import caption_generator as captions
+import image_generator as imgen
 import instagram_publisher as ig
 
 POSTING_INTERVAL_DAYS = 2
@@ -61,7 +60,7 @@ def step_1_ingest_new_images():
 
 
 def step_2_generate_captions():
-    print("-> Generez caption-uri pentru intrarile in asteptare...")
+    print("-> Generez variante + caption-uri pentru intrarile in asteptare...")
     pending = cal.get_pending_entries()
 
     for entry in pending:
@@ -69,6 +68,13 @@ def step_2_generate_captions():
             local_path = gdrive.download_image(
                 entry["source_image_id"], entry["source_image_name"]
             )
+
+            try:
+                generated_path = imgen.generate_variation(local_path, "feed_square")
+            except Exception as gen_error:
+                print(f"  ! Generare varianta esuata, folosesc imaginea originala: {gen_error}")
+                generated_path = local_path
+
             image_description = (
                 f"Randare/proiect de design interior: {entry['source_image_name']}"
             )
@@ -78,9 +84,9 @@ def step_2_generate_captions():
                 entry["id"],
                 status="ready",
                 caption=caption,
-                generated_image_path=str(local_path),
+                generated_image_path=str(generated_path),
             )
-            print(f"  OK caption generat pentru {entry['source_image_name']}")
+            print(f"  OK varianta + caption generate pentru {entry['source_image_name']}")
         except Exception as e:
             cal.mark_failed(entry["id"], str(e))
             print(f"  EROARE la {entry['source_image_name']}: {e}")
@@ -97,8 +103,9 @@ def step_3_publish_due_posts():
 
     for entry in ready_due:
         try:
-            image_filename = Path(entry["generated_image_path"]).name
-            image_url = f"{RAW_GITHUB_BASE}/data/incoming/{image_filename}"
+            image_path = Path(entry["generated_image_path"])
+            subfolder = "generated" if image_path.parent.name == "generated" else "incoming"
+            image_url = f"{RAW_GITHUB_BASE}/data/{subfolder}/{image_path.name}"
 
             media_id = ig.publish_image_post(image_url, entry["caption"])
             cal.mark_posted(entry["id"], media_id)
