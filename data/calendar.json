@@ -16,19 +16,34 @@
     },
     {
       "id": "78548196-9562-4dcc-9773-f084a03b61f6",
-      "status": "ready",
+      "status": "posted",
       "post_type": "carousel",
       "pillar": "practical_tip",
       "scheduled_date": "2026-07-11",
       "source_folder_id": "1_QUS0yneM23KSzt-LqER4bsD97mXht2A",
       "source_folder_name": "baie mare apartament Fagaras",
-      "source_image_ids": ["1rDDeeB9YgRluL2lmvjropK1VJhqou9bn", "1Eys0cYLFQUJTSICG65GfJKqVAxWQImxx", "1eAkH0T-pLjkU05iuqzhqOLUROmDNM7HL", "1vocWQZxawqXOmrAGmwIli41MOZRgKjVc"],
-      "source_image_names": ["r27.png", "r28.png", "r29.png", "r30.png"],
-      "generated_image_paths": ["/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r27.png", "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r28.png", "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r29.png", "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r30.png"],
+      "source_image_ids": [
+        "1rDDeeB9YgRluL2lmvjropK1VJhqou9bn",
+        "1Eys0cYLFQUJTSICG65GfJKqVAxWQImxx",
+        "1eAkH0T-pLjkU05iuqzhqOLUROmDNM7HL",
+        "1vocWQZxawqXOmrAGmwIli41MOZRgKjVc"
+      ],
+      "source_image_names": [
+        "r27.png",
+        "r28.png",
+        "r29.png",
+        "r30.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r27.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r28.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r29.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/baie mare apartament Fagaras_r30.png"
+      ],
       "caption": "O baie care se simte mare nu e neaparat una care este mare. Totul tine de cateva alegeri simple: culori deschise pe pereti, lumina bine plasata (nu doar un spot in tavan) si cat mai putine suprafete aglomerate vizual.\n\nDaca ai o baie mica sau medie, cel mai rapid lucru pe care il poti face e sa renunti la dulapuri suspendate grele si sa inlocuiesti cu rafturi deschise sau nise in perete. Castiga ochiul spatiu pe care metrii patrati nu ti-l dau.\n\nAi o baie pe care vrei s-o regandesti? Comenteaza baie si discutam.\n\n#designinterior #baiemodern #amenajareapartament #bmdesign #sfaturidesign",
       "created_at": "2026-07-11T21:48:19.924714",
-      "posted_at": null,
-      "ig_media_id": null,
+      "posted_at": "2026-07-11T22:02:10.249805",
+      "ig_media_id": "18180562861406862",
       "error": null
     }
   ]
