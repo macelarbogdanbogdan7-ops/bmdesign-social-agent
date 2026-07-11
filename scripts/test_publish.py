@@ -1,9 +1,9 @@
 """
 Script de test, unic, pentru a verifica publicarea directa prin Instagram
-Graph API, fara dependenta de Google Drive sau Claude API.
-Rulat manual din tab-ul Actions (workflow test-publish.yml).
+Graph API. Afiseaza raspunsul complet de eroare de la Meta, pentru diagnostic.
 """
-import instagram_publisher as ig
+import os
+import requests
 
 IMAGE_URL = "https://raw.githubusercontent.com/macelarbogdanbogdan7-ops/bmdesign-social-agent/main/data/incoming/Image_with_logo.png"
 
@@ -15,7 +15,21 @@ Tu ai alege un asemenea contrast in propria bucatarie, sau preferi tonuri mai di
 
 #designinterior #bucatariemoderna #cupru #arhitecturainterioara #bmdesign"""
 
-if __name__ == "__main__":
-      media_id = ig.publish_image_post(IMAGE_URL, CAPTION)
-      print(f"Postat cu succes. media_id={media_id}")
-  
+GRAPH_BASE = "https://graph.facebook.com/v21.0"
+account_id = os.environ["IG_BUSINESS_ACCOUNT_ID"]
+token = os.environ["IG_ACCESS_TOKEN"]
+
+print(f"Account ID: {account_id}")
+print(f"Image URL: {IMAGE_URL}")
+
+resp = requests.post(
+    f"{GRAPH_BASE}/{account_id}/media",
+    data={
+        "image_url": IMAGE_URL,
+        "caption": CAPTION,
+        "access_token": token,
+    },
+)
+
+print(f"Status code: {resp.status_code}")
+print(f"Response body: {resp.text}")
