@@ -12,13 +12,15 @@ from pathlib import Path
 
 CALENDAR_PATH = Path(__file__).parent.parent / "data" / "calendar.json"
 
-# Pilonii tematici de continut
+# Pilonii tematici de continut - informativi + generare de trafic/leaduri.
+# Nu presupun perechi de imagini (before/after), functioneaza cu orice
+# randare individuala primita din Drive.
 CONTENT_PILLARS = [
-    "before_after",
-    "process",
-    "storytelling",
-    "tips",
-    "material_focus",
+    "practical_tip",
+    "material_spotlight",
+    "design_process",
+    "myth_vs_reality",
+    "project_invitation",
 ]
 
 
