@@ -1,13 +1,13 @@
 """
 Orchestrator principal, rulat de GitHub Actions la fiecare rulare programata.
 
+Calendar strategic:
+- Postari simple: Luni si Vineri
+- Carusele: Miercuri
+
 Ce face, in ordine:
-1. Verifica Google Drive pentru continut nou, in 3 categorii:
-   - imagini in folderul principal -> postari simple
-   - subfoldere in "carusele/" -> postari tip carusel (2-10 imagini)
-   - imagini in "stories/" -> Instagram Stories
-2. Pentru intrarile "pending", genereaza varianta/variante de imagine +
-   caption (Story nu are caption) -> le trece in "ready".
+1. Verifica Google Drive pentru continut nou (postari simple + carusele).
+2. Pentru intrarile "pending", genereaza imagine + caption -> "ready".
 3. Pentru intrarile "ready" programate azi -> le publica pe Instagram.
 """
 import itertools
@@ -23,7 +23,9 @@ import caption_generator as captions
 import image_generator as imgen
 import instagram_publisher as ig
 
-POSTING_INTERVAL_DAYS = 2
+# Zilele saptamanii (Luni=0 ... Duminica=6) pentru fiecare tip de postare.
+SINGLE_POST_WEEKDAYS = {0, 4}   # Luni, Vineri
+CAROUSEL_POST_WEEKDAYS = {2}    # Miercuri
 
 RAW_GITHUB_BASE = os.environ.get(
     "RAW_GITHUB_BASE",
@@ -38,14 +40,18 @@ def _slugify(name: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]", "", name)
 
 
-def _next_available_slot() -> str:
+def _next_slot(allowed_weekdays: set[int]) -> str:
+    """Gaseste urmatoarea data libera (neocupata deja), cu ziua saptamanii
+    permisa pentru acest tip de postare."""
     data = cal._load_raw()
     used_dates = {e["scheduled_date"] for e in data["entries"] if e["status"] != "failed"}
 
     candidate = date.today()
-    while candidate.isoformat() in used_dates:
-        candidate += timedelta(days=POSTING_INTERVAL_DAYS)
-    return candidate.isoformat()
+    for _ in range(60):  # limita de siguranta, ~2 luni inainte
+        if candidate.weekday() in allowed_weekdays and candidate.isoformat() not in used_dates:
+            return candidate.isoformat()
+        candidate += timedelta(days=1)
+    raise RuntimeError("Nu s-a gasit niciun slot liber in urmatoarele 60 de zile.")
 
 
 def _image_url_for(local_path: Path) -> str:
@@ -57,11 +63,11 @@ def step_1_ingest_new_content():
     print("-> Verific Google Drive pentru continut nou...")
     pillar_cycle = itertools.cycle(cal.CONTENT_PILLARS)
 
-    # 1a. Postari simple (imagini din folderul principal)
+    # 1a. Postari simple (imagini din folderul principal) -> Luni/Vineri
     already_used = cal.already_used_image_ids()
     new_images = gdrive.list_new_single_images(already_used)
     for img in new_images:
-        slot = _next_available_slot()
+        slot = _next_slot(SINGLE_POST_WEEKDAYS)
         pillar = next(pillar_cycle)
         cal.add_entry(
             source_image_id=img["id"],
@@ -71,11 +77,11 @@ def step_1_ingest_new_content():
         )
         print(f"  + [single] {img['name']} -> {slot} ({pillar})")
 
-    # 1b. Carusele (subfoldere din "carusele/")
+    # 1b. Carusele (subfoldere din "carusele/") -> Miercuri
     already_used_folders = cal.already_used_folder_ids()
     new_carousels = gdrive.list_new_carousel_folders(already_used_folders)
     for folder in new_carousels:
-        slot = _next_available_slot()
+        slot = _next_slot(CAROUSEL_POST_WEEKDAYS)
         pillar = next(pillar_cycle)
         image_ids = [f["id"] for f in folder["images"]]
         image_names = [f["name"] for f in folder["images"]]
@@ -89,19 +95,7 @@ def step_1_ingest_new_content():
         )
         print(f"  + [carusel] {folder['name']} ({len(image_ids)} imagini) -> {slot} ({pillar})")
 
-    # 1c. Stories (imagini din "stories/")
-    already_used_stories = cal.already_used_image_ids()
-    new_stories = gdrive.list_new_story_images(already_used_stories)
-    for img in new_stories:
-        slot = _next_available_slot()
-        cal.add_story_entry(
-            source_image_id=img["id"],
-            source_image_name=img["name"],
-            scheduled_date=slot,
-        )
-        print(f"  + [story] {img['name']} -> {slot}")
-
-    if not (new_images or new_carousels or new_stories):
+    if not (new_images or new_carousels):
         print("  Niciun continut nou.")
 
 
@@ -145,21 +139,6 @@ def _prepare_carousel(entry: dict):
     )
 
 
-def _prepare_story(entry: dict):
-    local_path = gdrive.download_image(entry["source_image_id"], _slugify(entry["source_image_name"]))
-    try:
-        generated_path = imgen.generate_variation(local_path, "story_vertical")
-    except Exception as gen_error:
-        print(f"  ! Generare varianta esuata, folosesc imaginea originala: {gen_error}")
-        generated_path = local_path
-
-    cal.update_entry(
-        entry["id"],
-        status="ready",
-        generated_image_path=str(generated_path),
-    )
-
-
 def step_2_prepare_pending_entries():
     print("-> Pregatesc intrarile in asteptare (imagine + caption)...")
     pending = cal.get_pending_entries()
@@ -171,8 +150,6 @@ def step_2_prepare_pending_entries():
                 _prepare_single(entry)
             elif post_type == "carousel":
                 _prepare_carousel(entry)
-            elif post_type == "story":
-                _prepare_story(entry)
             else:
                 raise ValueError(f"post_type necunoscut: {post_type}")
             print(f"  OK pregatit [{post_type}] {entry.get('source_image_name') or entry.get('source_folder_name')}")
@@ -201,10 +178,6 @@ def step_3_publish_due_posts():
             elif post_type == "carousel":
                 image_urls = [_image_url_for(Path(p)) for p in entry["generated_image_paths"]]
                 media_id = ig.publish_carousel_post(image_urls, entry["caption"])
-
-            elif post_type == "story":
-                image_url = _image_url_for(Path(entry["generated_image_path"]))
-                media_id = ig.publish_story(image_url)
 
             else:
                 raise ValueError(f"post_type necunoscut: {post_type}")
