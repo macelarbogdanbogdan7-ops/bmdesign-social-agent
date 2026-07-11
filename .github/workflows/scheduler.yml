@@ -35,7 +35,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-          GDRIVE_SERVICE_ACCOUNT_FILE: config/gdrive-service-account.json
+          GDRIVE_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/config/gdrive-service-account.json
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           RAW_GITHUB_BASE: https://raw.githubusercontent.com/${{ github.repository }}/main
