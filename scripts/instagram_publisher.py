@@ -1,14 +1,14 @@
 """
-Publica postari pe Instagram prin Graph API (Content Publishing flow).
+Publica postari pe Instagram prin Instagram API (Instagram Login flow).
 
-IMPORTANT: Graph API cere un URL public catre imagine, nu upload direct de
-fisier. Cea mai simpla solutie fara server: imaginile generate se pun in
-repo (/data/incoming sau /data/generated), GitHub Actions le comite, iar
-Graph API le preia de la adresa raw.githubusercontent.com.
+IMPORTANT: Foloseste graph.instagram.com (nu graph.facebook.com), pentru ca
+token-ul e generat prin fluxul Instagram Business Login, nu Facebook Login.
+Graph API cere un URL public catre imagine, nu upload direct de fisier.
+Imaginile generate se pun in repo (/data/incoming), GitHub Actions le comite,
+iar API-ul le preia de la adresa raw.githubusercontent.com.
 
 Necesita (vezi .env.example):
-- IG_ACCESS_TOKEN: token long-lived, cu permisiunile instagram_content_publish
-  si instagram_basic aprobate prin App Review.
+- IG_ACCESS_TOKEN: token generat din API Setup (Instagram Login flow).
 - IG_BUSINESS_ACCOUNT_ID: ID-ul contului tau Business/Creator.
 
 Limite de retinut (Meta, 2026):
@@ -20,7 +20,7 @@ import time
 import requests
 
 GRAPH_API_VERSION = "v21.0"
-GRAPH_BASE = f"https://graph.facebook.com/{GRAPH_API_VERSION}"
+GRAPH_BASE = f"https://graph.instagram.com/{GRAPH_API_VERSION}"
 
 
 def _access_token() -> str:
