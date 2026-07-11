@@ -25,7 +25,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Creeaza directoarele necesare
-        run: mkdir -p config data/incoming
+        run: mkdir -p config data/incoming data/generated
 
       - name: Scrie cheia Google Service Account din secret
         run: echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > config/gdrive-service-account.json
@@ -37,6 +37,7 @@ jobs:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
           GDRIVE_SERVICE_ACCOUNT_FILE: config/gdrive-service-account.json
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           RAW_GITHUB_BASE: https://raw.githubusercontent.com/${{ github.repository }}/main
         working-directory: scripts
         run: python scheduler.py
