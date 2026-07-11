@@ -4,7 +4,7 @@ intr-un fisier JSON care persista in repo (commit automat de GitHub Actions
 dupa fiecare rulare).
 
 Fiecare intrare are un status: pending -> ready -> posted (sau failed), si un
-post_type: "single" | "carousel" | "story".
+post_type: "single" | "carousel".
 """
 import json
 import uuid
@@ -85,33 +85,6 @@ def add_carousel_entry(
         "source_image_ids": image_ids,
         "source_image_names": image_names,
         "generated_image_paths": None,
-        "caption": None,
-        "created_at": datetime.utcnow().isoformat(),
-        "posted_at": None,
-        "ig_media_id": None,
-        "error": None,
-    }
-    data["entries"].append(entry)
-    _save_raw(data)
-    return entry
-
-
-def add_story_entry(
-    source_image_id: str,
-    source_image_name: str,
-    scheduled_date: str,
-) -> dict:
-    """Postare tip Story (fara caption, expira in 24h pe Instagram)."""
-    data = _load_raw()
-    entry = {
-        "id": str(uuid.uuid4()),
-        "status": "pending",
-        "post_type": "story",
-        "pillar": None,
-        "scheduled_date": scheduled_date,
-        "source_image_id": source_image_id,
-        "source_image_name": source_image_name,
-        "generated_image_path": None,
         "caption": None,
         "created_at": datetime.utcnow().isoformat(),
         "posted_at": None,
