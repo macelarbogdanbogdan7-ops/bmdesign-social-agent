@@ -30,6 +30,9 @@ jobs:
       - name: Scrie cheia Google Service Account din secret
         run: echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > config/gdrive-service-account.json
 
+      - name: Debug - verifica dimensiunea fisierului cheii (fara a-i afisa continutul)
+        run: wc -c config/gdrive-service-account.json
+
       - name: Ruleaza agentul
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
