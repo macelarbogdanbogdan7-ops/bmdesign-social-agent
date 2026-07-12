@@ -1,0 +1,27 @@
+name: Demo App Review - Comentariu + Raspuns
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  demo-reply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instaleaza dependentele
+        run: pip install -r requirements.txt
+
+      - name: Ruleaza demo-ul
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+        working-directory: scripts
+        run: python demo_reply.py
