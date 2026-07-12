@@ -143,6 +143,19 @@ def get_recent_comments(media_id: str) -> list[dict]:
     return resp.json().get("data", [])
 
 
+def post_comment(media_id: str, message: str) -> str:
+    """Posteaza un comentariu nou (de pe contul propriu) pe o postare.
+    Util pentru demo App Review: scrierea proprie functioneaza fara
+    Advanced Access, spre deosebire de citirea comentariilor altor useri."""
+    token = _access_token()
+    resp = requests.post(
+        f"{GRAPH_BASE}/{media_id}/comments",
+        data={"message": message, "access_token": token},
+    )
+    resp.raise_for_status()
+    return resp.json()["id"]
+
+
 def reply_to_comment(comment_id: str, message: str) -> str:
     token = _access_token()
     resp = requests.post(
