@@ -45,6 +45,387 @@
       "posted_at": "2026-07-11T22:02:10.249805",
       "ig_media_id": "18180562861406862",
       "error": null
+    },
+    {
+      "id": "08cb8fdd-adee-480c-b8e0-723031dbec26",
+      "status": "failed",
+      "post_type": "single",
+      "pillar": "practical_tip",
+      "scheduled_date": "2026-07-14",
+      "source_image_id": "1xvU-Jwu4ejnj04LBzgFgfbfRegX12w-r",
+      "source_image_name": "MT78M.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/MT78M.png",
+      "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată — nu am acces la fișierul MT78M.png.\n\nTrimite-mi o descriere a ceea ce se vede în imagine (culori dominante, tipul camerei, mobilier, iluminat, materiale vizibile) și îți scriu caption-ul imediat. 🙂",
+      "created_at": "2026-07-14T12:55:17.621800",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": "400 Client Error: Bad Request for url: https://graph.instagram.com/v21.0/17841448063534870/media"
+    },
+    {
+      "id": "4ac39a4a-bfd4-47d2-9021-ecec93b64749",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "material_spotlight",
+      "scheduled_date": "2026-07-16",
+      "source_image_id": "1Uq_ogwKm_raRudeWt63dJv4e8xMyRVXo",
+      "source_image_name": "r22.jpg",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r22.jpg",
+      "caption": "Îmi pare rău, nu pot vedea imaginea r22.jpg — nu am acces la fișiere sau imagini atașate.\n\nDacă îmi descrii pe scurt ce se vede în imagine (ex: tipul camerei, culorile dominante, un material sau finisaj vizibil — lemn, beton, catifea, marmură etc.), scriu imediat caption-ul potrivit. 🙂",
+      "created_at": "2026-07-14T12:55:17.624126",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "e70477c7-551b-47f9-ab18-c4b8836b41fa",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "design_process",
+      "scheduled_date": "2026-07-21",
+      "source_image_id": "1Ch513PySU1LdOzJMlHvqUXfPIce85Q8C",
+      "source_image_name": "render insula.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/render-insula.png",
+      "caption": "Unul dintre primele lucruri pe care le stabilim într-o bucătărie e insula — dacă are sens sau nu în acel spațiu.\n\nNu e mereu răspunsul corect. Depinde de cât circulezi, câți oameni gătesc simultan, cum vrei să se lege bucătăria de living. Uneori o insulă câștigă metri, alteori îi mănâncă.\n\nCând are sens, devine centrul casei. Loc de gătit, de stat, de conversație.\n\nDacă te gândești la o bucătărie nouă și nu știi dacă o insulă e varianta ta — scrie mai jos „insulă\" și discutăm. 👇\n\n#designinterior #bucatarie #insulabucatarie #bmdesign #amenajareinterioara",
+      "created_at": "2026-07-14T12:55:17.624765",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "cb940b08-3d37-4e8d-ac22-da40acae9e1b",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "myth_vs_reality",
+      "scheduled_date": "2026-07-23",
+      "source_image_id": "1WThZzlsGMCAigvvv_HKi3fv9opMxWRKL",
+      "source_image_name": "r14.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r14.png",
+      "caption": "Fără imagini atașate în conversație — văd doar numele fișierului (r14.png), dar nu și conținutul lui.\n\nDescrie-mi pe scurt ce se vede în imagine (culori dominante, tip de spațiu, materiale aparente, atmosferă generală) și îți scriu caption-ul imediat.",
+      "created_at": "2026-07-14T12:55:17.625299",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "c6883ad5-78a3-4080-8cf3-51b2e3e0363b",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "project_invitation",
+      "scheduled_date": "2026-07-28",
+      "source_image_id": "1nYRyWdDO-Uvgrz1X-TqgJcCUj6bgI9oC",
+      "source_image_name": "r9.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r9.png",
+      "caption": "Uite cum arată un spațiu înainte să fie construit — fiecare detaliu gândit, fiecare colț pus la locul lui, astfel încât tu să știi exact ce primești înainte să înceapă vreun șantier.\n\nAsta facem la bmdesign.ro: transformăm ideile tale (chiar și cele vagi) într-un proiect clar, de la concept până la execuție.\n\nDacă ai un spațiu în minte — casă, apartament, orice — scrie mai jos „proiect\" și te contactăm noi. 🏠\n\n#designinterior #arhitectura #bmdesign #amenajariinterioare #casavisurilor",
+      "created_at": "2026-07-14T12:55:17.625743",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "673e9a8d-378f-491b-900b-a5a9938e5f6c",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "practical_tip",
+      "scheduled_date": "2026-07-30",
+      "source_image_id": "1xrVO7-fdAonXyTxPFmbhOEj2D5nodKYE",
+      "source_image_name": "r3-4.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r3-4.png",
+      "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată — nu am acces la fișierul r3-4.png.\n\nTrimite-mi o descriere a ce se vede în imagine (culori dominante, tip de cameră, mobilier, iluminat, atmosferă generală) și îți scriu imediat caption-ul. 🙏",
+      "created_at": "2026-07-14T12:55:17.626151",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "3b5b83a3-1646-4b05-abe3-742229df93f8",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "material_spotlight",
+      "scheduled_date": "2026-08-04",
+      "source_image_id": "1slJ1hKQfQmseQ6XV6MDHH4S7ezDufvQQ",
+      "source_image_name": "2-1.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/2-1.png",
+      "caption": "Îmi pare rău, nu pot vedea imaginea atașată. Pentru a scrie un caption relevant, am nevoie să știu ce este vizibil în imagine — ce materiale, finisaje sau elemente de design sunt predominante (ex: lemn, beton, marmură, catifea, tablă, gresie mare format etc.).\n\nDescrie-mi pe scurt ce vezi în imagine și scriu imediat caption-ul. 🙂",
+      "created_at": "2026-07-14T12:55:17.626548",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "7f178798-dd10-4b83-8d5e-f3c5998831c7",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "design_process",
+      "scheduled_date": "2026-08-06",
+      "source_image_id": "1RA7iF6jq9T6iXDL5ZHBUe80ZxyrsT1IK",
+      "source_image_name": "R2.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/R2.png",
+      "caption": "Înainte să ajungem la cum arată un spațiu, petrecem destul de mult timp înțelegând *cum e folosit* — cine intră, la ce ore, cu ce stare.\n\nPentru livingul ăsta, prima decizie n-a fost culoarea sau mobila, ci lumina. De unde vine, încotro se îndreaptă și cum împarte încăperea în zone fără niciun perete în plus.\n\nAbia după asta vine restul. 🪟\n\nDacă ai un spațiu la care te gândești și nu știi de unde să începi, comentează „lumină\" și îți spun ce întrebări pun eu primele.\n\n#designinterior #bmdesign #livingroom #architecturedesign #acasa",
+      "created_at": "2026-07-14T12:55:17.626985",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "84e1ea35-811e-4796-b6f1-df7001ed1d47",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "myth_vs_reality",
+      "scheduled_date": "2026-08-11",
+      "source_image_id": "1JRQg2HP5iReuy6pEOKK2GHo6XLyK6vTk",
+      "source_image_name": "1-1.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/1-1.png",
+      "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată (1-1.png nu s-a încărcat corect în conversație).\n\nTrimite-mi din nou imaginea și îți scriu caption-ul imediat. 🙂",
+      "created_at": "2026-07-14T12:55:17.627394",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "413f161e-5b85-4080-bd76-5d5e90d7ecda",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "project_invitation",
+      "scheduled_date": "2026-08-13",
+      "source_image_id": "1LI6I4ruv1NnEDPJ2GaYrj0uBzWT4zLvr",
+      "source_image_name": "Image_1.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Image_1.png",
+      "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată. Poți să îmi descrii pe scurt ce apare în ea? De exemplu: ce tip de spațiu e (living, bucătărie, dormitor), ce atmosferă transmite, ce culori sau elemente dominante are.\n\nAșa îți scriu un caption care chiar se potrivește cu ce arată imaginea. 🙏",
+      "created_at": "2026-07-14T12:55:17.627822",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "2d8fb8cc-9a9a-4d27-a678-540eb352d243",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "practical_tip",
+      "scheduled_date": "2026-08-18",
+      "source_image_id": "1Op2ar1BMkUY_oIWC5lDMBrbSBUGWSwq0",
+      "source_image_name": "1-2.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/1-2.png",
+      "caption": "Îmi pare rău, dar nu am putut accesa fișierul „1-2.png\" — nu văd imaginea atașată efectiv.\n\nTrimite-mi imaginea (sau descrie-mi ce se vede în ea: culori dominante, tip de cameră, mobilier, lumină, materiale vizibile) și scriu imediat caption-ul. 🙂",
+      "created_at": "2026-07-14T12:55:17.628468",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "8e160e9b-1454-4065-8d29-7a4ae7608235",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "material_spotlight",
+      "scheduled_date": "2026-08-20",
+      "source_image_id": "1E4dolGthrmQU1lZnC-64MSzS2M3Nsmjn",
+      "source_image_name": "10-1.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/10-1.png",
+      "caption": "Îmi pare rău, nu pot vedea imaginea atașată. Nu am acces la fișierul „10-1.png\".\n\nDescrie-mi te rog ce se vede în imagine: ce încăpere este, ce materiale sau finisaje sunt vizibile (lemn, beton, marmură, tapițerie, vopsea, etc.), culorile dominante și atmosfera generală. Îți scriu imediat caption-ul! 🙌",
+      "created_at": "2026-07-14T12:55:17.629179",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "76681b21-35a4-489f-ba22-2212ffed6ed8",
+      "status": "ready",
+      "post_type": "single",
+      "pillar": "design_process",
+      "scheduled_date": "2026-08-25",
+      "source_image_id": "1puIZUBKUs3TVNU8gytcirIG3H5ereZoz",
+      "source_image_name": "r4-3.png",
+      "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r4-3.png",
+      "caption": "Înainte să ajungem la rezultatul final, există o etapă pe care puțini o văd: momentul în care alegem cum se \"simte\" un spațiu, nu doar cum arată.\n\nCulorile, materialele, proporțiile — fiecare decizie pleacă de la cum vrei să trăiești în acea cameră. Cald sau rece? Liniștit sau energic? Asta stabilim înainte să apară orice element concret.\n\nCel mai frecvent moment în care clienții spun \"da, asta e!\" nu e când văd mobila, ci când înțeleg că spațiul îi reprezintă.\n\nDacă te gândești la un proiect și nu știi de unde să începi, comentează **\"start\"** — îți explic cum arată primul pas la noi. 🏠\n\n#designinterior #arhitectura #bmdesign #amenajariinterioare #casavisurilor",
+      "created_at": "2026-07-14T12:55:17.629651",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "95c4f7a1-2262-4f60-8ffe-aa8ab6ab5df1",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "myth_vs_reality",
+      "scheduled_date": "2026-07-15",
+      "source_folder_id": "1r5yiaZZBYMdTvVTjucdND216RLo8ISdA",
+      "source_folder_name": "bucatarue_lemn_nuc_si_travertin",
+      "source_image_ids": [
+        "1U6lUIvpEQjSW-IQMogutOiY6yWUu3WSy",
+        "1_ZJ7r3jdVjFRli-XyCP_P6F7hv0V6NEd",
+        "1F_SoRw0ia4fn3WOxkUdyJLpWPB0BQIfe",
+        "19xlj3t9dL4HIbe1-sNz0y3Mksgi-_kGf"
+      ],
+      "source_image_names": [
+        "Copia fișierului Travertine_Walnut_r4_with_logo.png",
+        "Copia fișierului Travertine_Walnut_r1_with_logo.png",
+        "Copia fișierului Travertine_Walnut_r3_with_logo.png",
+        "Copia fișierului Travertine_Walnut_r2_with_logo.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/bucatarue_lemn_nuc_si_travertin_Copia-fiierului-Travertine_Walnut_r4_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/bucatarue_lemn_nuc_si_travertin_Copia-fiierului-Travertine_Walnut_r1_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/bucatarue_lemn_nuc_si_travertin_Copia-fiierului-Travertine_Walnut_r3_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/bucatarue_lemn_nuc_si_travertin_Copia-fiierului-Travertine_Walnut_r2_with_logo.png"
+      ],
+      "caption": "Mulți evită nucul în bucătărie de teamă că \"se vede orice pe el\". De fapt, e invers — textura lemnului camuflează mult mai bine urmele decât o suprafață albă lucioasă. 🪵\n\nTravertinul are și el reputația asta de \"greu de întreținut\", dar variantele tratate de azi sunt surprinzător de practice pentru uz zilnic.\n\nUneori materialele care par complicate sunt, de fapt, cele mai iertătoare.\n\nAi o bucătărie pe care vrei s-o regândești? Comentează **\"bucătărie\"** și îți povestim cum am aborda spațiul tău.\n\n#designinterior #bucatarie #designbucatarie #lemnnuc #bmdesign",
+      "created_at": "2026-07-14T12:55:20.317444",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "99f5d0da-80f2-4ab6-afe5-c51d10eef5aa",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "project_invitation",
+      "scheduled_date": "2026-07-22",
+      "source_folder_id": "1s9WGUG-NWOT53TIe5Wi-DI36uW9hQd0B",
+      "source_folder_name": "Birou_CEO",
+      "source_image_ids": [
+        "16us4-J2NXi3qkNJWdLbhU5Y1tE-gaUFU",
+        "1g4ZPhsmCQC_9vufNxreW9-lDY26XfpKN",
+        "150WqbJ_JGlKZJ22Tvo5vgbv9OxmBfV1k",
+        "1xBSsfBQ4tc8-sRTIxXTxDrPEwceDlEXM"
+      ],
+      "source_image_names": [
+        "Copia fișierului CEO_Office_1_with_logo.png",
+        "Copia fișierului CEO_Office_4_with_logo.png",
+        "Copia fișierului CEO_Office_2_with_logo.png",
+        "Copia fișierului CEO_Office_3_with_logo.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Birou_CEO_Copia-fiierului-CEO_Office_1_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Birou_CEO_Copia-fiierului-CEO_Office_4_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Birou_CEO_Copia-fiierului-CEO_Office_2_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Birou_CEO_Copia-fiierului-CEO_Office_3_with_logo.png"
+      ],
+      "caption": "Uneori un birou bine gândit face mai mult decât orice altă investiție în firmă. Nu doar că arată bine — îți influențează starea, deciziile, cum te percep cei care intră pe ușă.\n\nĂsta e exact ce facem noi: transformăm spații de lucru în locuri unde vrei să stai și unde impresionezi fără să zici nimic.\n\nDacă ai un birou (sau un spațiu) pe care vrei să-l regândești, scrie-mi „birou\" în comentarii și îți răspund personal. 🤝\n\n#designinterior #birouCEO #bmdesign #spatiidelucru #designromania",
+      "created_at": "2026-07-14T12:55:20.318210",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "39e22549-3206-4c68-83bd-c4b688b7be18",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "practical_tip",
+      "scheduled_date": "2026-07-29",
+      "source_folder_id": "1vBS7ifFhEWP9HWiwvv3KlharK8uRYJYo",
+      "source_folder_name": "Garderoba_masculina",
+      "source_image_ids": [
+        "1U1Q3PJV5yMoivAb9xUeKdSUdaicFfRXq",
+        "17IeqFGg_aKCiifffmxzb_08cZwm1pboP",
+        "1Taf1ZN9kWerCigZHVPUYCzaPqAthPXHM"
+      ],
+      "source_image_names": [
+        "Copia fișierului Dressing_r3_with_logo.png",
+        "Copia fișierului Dressing_r1_with_logo.png",
+        "Copia fișierului Dressing_r2_with_logo.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Garderoba_masculina_Copia-fiierului-Dressing_r3_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Garderoba_masculina_Copia-fiierului-Dressing_r1_with_logo.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Garderoba_masculina_Copia-fiierului-Dressing_r2_with_logo.png"
+      ],
+      "caption": "O garderobă bine gândită nu înseamnă neapărat mult spațiu — înseamnă spațiu organizat corect.\n\nCel mai simplu principiu: împarte pe categorii vizibile (pantofi, haine agățate, rafturi pentru pliate) și asigură-te că ai lumină în interior. Fără lumină bună, orice garderobă arată dezordonat, indiferent cât de aranjată e.\n\nLa culori și finisaje, mai puțin înseamnă mai mult — tonuri neutre, suprafețe mate sau lemn cald fac spațiul să pară îngrijit chiar și când nu e perfect ordonat. 😄\n\nCum arată garderoba ta acum — ai suficient spațiu sau mereu pare că lipsește ceva? Comentează și hai să vorbim.\n\n#garderoba #designinterior #organizareacasei #bmdesign #amenajariinterioare",
+      "created_at": "2026-07-14T12:55:20.319064",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "f828591f-daef-4670-ab21-a7287f62941f",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "material_spotlight",
+      "scheduled_date": "2026-08-05",
+      "source_folder_id": "1s4kzGl3vnj6T7F4nmKZuCZGasRvihSEz",
+      "source_folder_name": "Baie_apartament_fagaras_mica",
+      "source_image_ids": [
+        "1O3Y6ayu_kYSPs9-Sl1GZ_VHkvKhapthC",
+        "12DF95VU4lRaza7ee138lHABjjZsIbo0X",
+        "1iNpq9EZta0-ftiLi8q776MkqQbYPum7M",
+        "1fTrLSiIW3oCTFDPErbu0uHkSAEVAeRTy"
+      ],
+      "source_image_names": [
+        "r25.png",
+        "r24.png",
+        "r23.png",
+        "r26.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Baie_apartament_fagaras_mica_r25.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Baie_apartament_fagaras_mica_r24.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Baie_apartament_fagaras_mica_r23.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Baie_apartament_fagaras_mica_r26.png"
+      ],
+      "caption": "Marmura în baie — frumoasă, dar potrivită pentru tine?\n\nMulți o aleg pentru aspect, dar ezită când aud că „e pretențioasă\". Adevărul e la mijloc: marmura naturală chiar necesită puțină atenție (impregnare periodică, produse de curățare blânde), dar dacă știi asta de la început, nu vei avea niciodată o surpriză neplăcută.\n\nCe o face să merite? Nicio suprafață nu aduce același sentiment de căldură și unicitate — fiecare placă e diferită, nu există două la fel. 🖤\n\nTu ai o baie mică pe care vrei s-o transformi? Comentează **„baie\"** și îți spun de unde am începe.\n\n#designinterior #baiemodernamica #marmura #bmdesign #renovareapartament",
+      "created_at": "2026-07-14T12:55:20.319715",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "689c4d28-455d-4b87-b49e-fa16ed28cb96",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "design_process",
+      "scheduled_date": "2026-08-12",
+      "source_folder_id": "1Ci5HdUrxlXY2o0Vkb4Ca6qn3sTr_DtcV",
+      "source_folder_name": "Dormitor_parinti_apartament_fagaras",
+      "source_image_ids": [
+        "1XY5ZclrHuhD20wl8z-WQ8WBQcxtm3euw",
+        "1QMt-XSOy-s4xb3VrbYNowajRIlB395mZ",
+        "1UxARPMbfeqMSFzo8-do5iFS-hiCUv0MD",
+        "13n1Qd4BbjWAX5PHSpo9R8dNNvxedTJ3K"
+      ],
+      "source_image_names": [
+        "r1-4.png",
+        "r3-5.png",
+        "r4-3.png",
+        "r2-5.png"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Dormitor_parinti_apartament_fagaras_r1-4.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Dormitor_parinti_apartament_fagaras_r3-5.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Dormitor_parinti_apartament_fagaras_r4-3.png",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Dormitor_parinti_apartament_fagaras_r2-5.png"
+      ],
+      "caption": "Unul dintre primele lucruri pe care le stabilim înainte să desenăm orice linie e cum se odihnește omul care va locui acolo. Nu stilul, nu culorile — ci rutina. Cum intri în cameră seara, de ce parte te trezești, dacă ai nevoie de liniște totală sau de puțină lumină dimineața.\n\nDormitorul părinților e camera care se face ultima, dar care ar trebui gândită prima. 🛏️\n\nComentează „dormitor\" dacă și tu ai un spațiu de amenajat și vrei să vedem împreună ce e posibil.\n\n#designinterior #dormitor #amenajareapartament #bmdesign #interiordesign",
+      "created_at": "2026-07-14T12:55:20.320387",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
+    },
+    {
+      "id": "8e20bd66-9b0b-4f6c-8f1b-a611aec0478f",
+      "status": "ready",
+      "post_type": "carousel",
+      "pillar": "myth_vs_reality",
+      "scheduled_date": "2026-08-19",
+      "source_folder_id": "1No5WnMRiYriZWLdR0ZqJpFFjueX_H8OD",
+      "source_folder_name": "Camera_copilului_brasov_unik",
+      "source_image_ids": [
+        "15JaykmACKI4LJ7w3Rixc98dAedFC2ms2",
+        "1WXzFwRkEloeumrgkckA-WMGToy3Cvuar",
+        "1ZtRaNb-og_CTaIL4tjnVtj2t85CKYk8r"
+      ],
+      "source_image_names": [
+        "FB_IMG_1770847130460.jpg",
+        "FB_IMG_1770847135942.jpg",
+        "FB_IMG_1770847133089.jpg"
+      ],
+      "generated_image_paths": [
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Camera_copilului_brasov_unik_FB_IMG_1770847130460.jpg",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Camera_copilului_brasov_unik_FB_IMG_1770847135942.jpg",
+        "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/Camera_copilului_brasov_unik_FB_IMG_1770847133089.jpg"
+      ],
+      "caption": "Mulți evită culorile închise în camerele copiilor de frică să nu \"încarce\" spațiul. Dar uită-te ce se întâmplă când sunt folosite cu cap — camera respiră, are personalitate și nu arată a spațiu generic de catalog. 🎨\n\nCuloarea nu micșorează o cameră. O amenajare prost gândită, da.\n\nDacă ai un spațiu pentru copilul tău și nu știi de unde să începi, comentează **\"proiect\"** și îți spunem cum abordăm noi astfel de camere.\n\n#designinterior #cameracopilului #designbrasov #bmdesign #amenajariinterioare",
+      "created_at": "2026-07-14T12:55:20.321105",
+      "posted_at": null,
+      "ig_media_id": null,
+      "error": null
     }
   ]
 }
