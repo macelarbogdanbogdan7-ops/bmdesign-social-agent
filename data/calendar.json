@@ -63,7 +63,7 @@
     },
     {
       "id": "4ac39a4a-bfd4-47d2-9021-ecec93b64749",
-      "status": "ready",
+      "status": "posted",
       "post_type": "single",
       "pillar": "material_spotlight",
       "scheduled_date": "2026-07-16",
@@ -72,8 +72,8 @@
       "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r22.jpg",
       "caption": "Îmi pare rău, nu pot vedea imaginea r22.jpg — nu am acces la fișiere sau imagini atașate.\n\nDacă îmi descrii pe scurt ce se vede în imagine (ex: tipul camerei, culorile dominante, un material sau finisaj vizibil — lemn, beton, catifea, marmură etc.), scriu imediat caption-ul potrivit. 🙂",
       "created_at": "2026-07-14T12:55:17.624126",
-      "posted_at": null,
-      "ig_media_id": null,
+      "posted_at": "2026-07-16T15:20:26.785524",
+      "ig_media_id": "17857928547675519",
       "error": null
     },
     {
