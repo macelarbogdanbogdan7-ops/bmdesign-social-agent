@@ -108,7 +108,7 @@
     },
     {
       "id": "c6883ad5-78a3-4080-8cf3-51b2e3e0363b",
-      "status": "ready",
+      "status": "posted",
       "post_type": "single",
       "pillar": "project_invitation",
       "scheduled_date": "2026-07-28",
@@ -117,8 +117,8 @@
       "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r9.png",
       "caption": "Uite cum arată un spațiu înainte să fie construit — fiecare detaliu gândit, fiecare colț pus la locul lui, astfel încât tu să știi exact ce primești înainte să înceapă vreun șantier.\n\nAsta facem la bmdesign.ro: transformăm ideile tale (chiar și cele vagi) într-un proiect clar, de la concept până la execuție.\n\nDacă ai un spațiu în minte — casă, apartament, orice — scrie mai jos „proiect\" și te contactăm noi. 🏠\n\n#designinterior #arhitectura #bmdesign #amenajariinterioare #casavisurilor",
       "created_at": "2026-07-14T12:55:17.625743",
-      "posted_at": null,
-      "ig_media_id": null,
+      "posted_at": "2026-07-28T16:16:48.720960",
+      "ig_media_id": "17958569636984936",
       "error": null
     },
     {
