@@ -123,7 +123,7 @@
     },
     {
       "id": "673e9a8d-378f-491b-900b-a5a9938e5f6c",
-      "status": "ready",
+      "status": "posted",
       "post_type": "single",
       "pillar": "practical_tip",
       "scheduled_date": "2026-07-30",
@@ -132,8 +132,8 @@
       "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/r3-4.png",
       "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată — nu am acces la fișierul r3-4.png.\n\nTrimite-mi o descriere a ce se vede în imagine (culori dominante, tip de cameră, mobilier, iluminat, atmosferă generală) și îți scriu imediat caption-ul. 🙏",
       "created_at": "2026-07-14T12:55:17.626151",
-      "posted_at": null,
-      "ig_media_id": null,
+      "posted_at": "2026-07-30T15:59:01.810318",
+      "ig_media_id": "18127687333658676",
       "error": null
     },
     {
