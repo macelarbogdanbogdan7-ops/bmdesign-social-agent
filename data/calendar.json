@@ -168,7 +168,7 @@
     },
     {
       "id": "84e1ea35-811e-4796-b6f1-df7001ed1d47",
-      "status": "ready",
+      "status": "posted",
       "post_type": "single",
       "pillar": "myth_vs_reality",
       "scheduled_date": "2026-08-11",
@@ -177,8 +177,8 @@
       "generated_image_path": "/home/runner/work/bmdesign-social-agent/bmdesign-social-agent/data/incoming/1-1.png",
       "caption": "Îmi pare rău, dar nu pot vedea imaginea atașată (1-1.png nu s-a încărcat corect în conversație).\n\nTrimite-mi din nou imaginea și îți scriu caption-ul imediat. 🙂",
       "created_at": "2026-07-14T12:55:17.627394",
-      "posted_at": null,
-      "ig_media_id": null,
+      "posted_at": "2026-08-11T09:47:17.476720",
+      "ig_media_id": "18155310724500412",
       "error": null
     },
     {
